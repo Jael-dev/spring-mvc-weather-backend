@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  app:
+    image: openjdk:21-bullseye
+    container_name: app
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
+    command: /bin/sh
+  oracle-db:
+    image: container-registry.oracle.com/database/express:latest
+    container_name: oracle-db
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    environment:
+      - ORACLE_PDB=prodpdb
+      - ORACLE_PWD=your_prod_password
+      - ORACLE_CHARACTERSET=AL32UTF8
+      - ORACLE_DB_NAME=proddb
+    volumes:
+      - oracle-data-prod:/opt/oracle/oradata
+
+volumes:
+  oracle-data-prod:

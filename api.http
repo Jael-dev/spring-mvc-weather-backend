@@ -1,0 +1,20 @@
+GET http://localhost:8080/springmvc/weather?latitude=31.205514643719876&longitude=121.49262118707784&radius=890&date=2024-04-05
+Accept: application/json
+
+###
+GET http://localhost:8080/springmvc/weather?latitude=31.2&longitude=121.5&radius=100&date=2024-04-05
+Accept: application/json
+
+
+###
+POST http://localhost:8080/springmvc/weather
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "latitude": 31.2,
+  "longitude": 121.5,
+  "temperature": 20,
+  "weather": "Sunny"
+}
